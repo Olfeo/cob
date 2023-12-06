@@ -115,14 +115,14 @@ func run(c config) error {
 		return xerrors.Errorf("unable to get a worktree based on the given fs: %w", err)
 	}
 
-	s, err := w.Status()
-	if err != nil {
-		return xerrors.Errorf("unable to get the working tree status: %w", err)
-	}
-
-	if !s.IsClean() {
-		return xerrors.New("the repository is dirty: commit all changes before running 'cob'")
-	}
+	//s, err := w.Status()
+	//if err != nil {
+	//	return xerrors.Errorf("unable to get the working tree status: %w", err)
+	//}
+	//
+	//if !s.IsClean() {
+	//	return xerrors.New("the repository is dirty: commit all changes before running 'cob'")
+	//}
 
 	err = w.Reset(&git.ResetOptions{Commit: *prev, Mode: git.HardReset})
 	if err != nil {
